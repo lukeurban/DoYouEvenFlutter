@@ -1,5 +1,5 @@
-import 'package:DoYouEvenFlutter/scroll_to_element/scroll_to_element.dart';
-import 'package:DoYouEvenFlutter/scroll_to_element/scroll_to_element_with_controller.dart';
+import 'package:DoYouEvenFlutter/ep1_scroll_to_element/scroll_to_element.dart';
+import 'package:DoYouEvenFlutter/ep1_scroll_to_element/scroll_to_element_with_controller.dart';
 import 'package:flutter/material.dart';
 
 void main() {

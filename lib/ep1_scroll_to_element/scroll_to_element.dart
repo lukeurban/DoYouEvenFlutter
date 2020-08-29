@@ -2,17 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-class ScrollToElementWithController extends StatefulWidget {
-  static const route = '/scroll_to_element_with_scroll_controller';
+class ScrollToElement extends StatefulWidget {
+  static const route = '/scroll_to_element';
 
-  ScrollToElementWithController({Key key}) : super(key: key);
+  ScrollToElement({Key key}) : super(key: key);
 
   @override
-  _ScrollToElementWithControllerState createState() => _ScrollToElementWithControllerState();
+  _ScrollToElementState createState() => _ScrollToElementState();
 }
 
-class _ScrollToElementWithControllerState extends State<ScrollToElementWithController> {
-  final ScrollController scrollController = ScrollController();
+class _ScrollToElementState extends State<ScrollToElement> {
   List<ListItem> list;
   @override
   void initState() {
@@ -23,15 +22,14 @@ class _ScrollToElementWithControllerState extends State<ScrollToElementWithContr
     }
     list = intList.map((element) => ListItem(index: element)).toList();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      scrollController.animateTo(60.0 * 70,
-          curve: Curves.linear, duration: Duration(milliseconds: 500));
+      ListItem item = list.elementAt(70);
+      Scrollable.ensureVisible(item.itemKey.currentContext);
     });
   }
 
   @override
   void dispose() {
     super.dispose();
-    scrollController.dispose();
   }
 
   @override
@@ -50,11 +48,13 @@ class _ScrollToElementWithControllerState extends State<ScrollToElementWithContr
       body: SafeArea(
         child: Container(
           child: SingleChildScrollView(
-            controller: scrollController,
             child: Column(
               children: list
                   .map((element) => Container(
-                        height: 60,
+                        key: element.itemKey,
+                        margin: EdgeInsets.symmetric(vertical: 10),
+                        color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
+                        height: new Random().nextInt(80) + 20.0,
                         child: Center(
                           child: Text(element.index.toString()),
                         ),
@@ -69,15 +69,17 @@ class _ScrollToElementWithControllerState extends State<ScrollToElementWithContr
           Random random = new Random();
           int randomNumber = random.nextInt(100);
           ListItem item = list.elementAt(randomNumber);
+          Scrollable.ensureVisible(item.itemKey.currentContext);
         },
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: Text('Roll'),
       ),
     );
   }
 }
 
 class ListItem {
+  final GlobalKey itemKey = GlobalKey();
   final int index;
   ListItem({
     this.index,
