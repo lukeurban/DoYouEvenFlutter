@@ -65,18 +65,17 @@ class _ScrollToElementWithControllerState extends State<ScrollToElementWithContr
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Random random = new Random();
-          int randomNumber = random.nextInt(100);
-          scrollController.animateTo(
-            60.0 * randomNumber,
-            curve: Curves.linear,
-            duration: Duration(milliseconds: 500),
-          );
-        },
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
+          onPressed: () {
+            Random random = new Random();
+            int randomNumber = random.nextInt(100);
+            scrollController.animateTo(
+              60.0 * randomNumber,
+              curve: Curves.linear,
+              duration: Duration(milliseconds: 500),
+            );
+          },
+          tooltip: 'Increment',
+          child: Text('Roll')),
     );
   }
 }

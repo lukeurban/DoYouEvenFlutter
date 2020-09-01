@@ -1,5 +1,6 @@
 import 'package:DoYouEvenFlutter/ep1_scroll_to_element/scroll_to_element.dart';
 import 'package:DoYouEvenFlutter/ep1_scroll_to_element/scroll_to_element_with_controller.dart';
+import 'package:DoYouEvenFlutter/ep2_api_enum_mapping/api_enum_mapping.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
     HomeScreen.route: (context) => HomeScreen(),
     ScrollToElement.route: (context) => ScrollToElement(),
     ScrollToElementWithController.route: (context) => ScrollToElementWithController(),
+    ApiEnumMapping.route: (context) => ApiEnumMapping(),
   };
   // This widget is the root of your application.
   @override
