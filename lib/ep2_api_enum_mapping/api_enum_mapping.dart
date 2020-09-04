@@ -14,23 +14,33 @@ class _ApiEnumMappingState extends State<ApiEnumMapping> {
   List<Map<String, dynamic>> responseMock = [
     {
       'id': 1,
-      'name': 'This is Success message',
-      'status': 'SUCCESS',
+      'name': 'THE BUG',
+      'brand': 'VW',
     },
     {
-      'id': 1,
-      'name': 'This is Error message',
-      'status': 'ERROR',
+      'id': 2,
+      'name': 'A car',
+      'brand': 'BMW',
     },
     {
-      'id': 1,
-      'name': 'This is Warnring message',
-      'status': 'WARNRING',
+      'id': 3,
+      'name': 'Another car',
+      'brand': 'MERCEDES',
+    },
+    {
+      'id': 4,
+      'name': 'Another car',
+      'brand': 'TESLA',
+    },
+    {
+      'id': 5,
+      'name': 'Another car',
+      'brand': 'FORD',
     }
   ];
 
   Widget buildModelV1View() {
-    List<ApiModel> modelV1 = responseMock.map((jsonData) => ApiModel.fromJson(jsonData)).toList();
+    List<Car> modelV1 = responseMock.map((jsonData) => Car.fromJson(jsonData)).toList();
 
     TextStyle textStyle = TextStyle(color: Colors.white, fontSize: 20);
     return Container(
@@ -55,7 +65,7 @@ class _ApiEnumMappingState extends State<ApiEnumMapping> {
   }
 
   Widget buildModelV2View() {
-    List<ApiModel2> modelV2 = responseMock.map((jsonData) => ApiModel2.fromJson(jsonData)).toList();
+    List<Car2> modelV2 = responseMock.map((jsonData) => Car2.fromJson(jsonData)).toList();
     TextStyle textStyle = TextStyle(color: Colors.white, fontSize: 20);
     return Container(
       width: double.infinity,
@@ -78,17 +88,26 @@ class _ApiEnumMappingState extends State<ApiEnumMapping> {
     );
   }
 
-  Color modelV2BgColor(ApiModel2 model) {
+  Color modelV2BgColor(Car2 model) {
     Color color;
-    switch (model.status) {
-      case 'SUCCESS':
+    switch (model.brand) {
+      case 'VOLVO':
         color = Colors.green;
         break;
-      case 'ERROR':
+      case 'MERCEDES':
         color = Colors.red;
         break;
-      case 'WARNRING':
+      case 'BMW':
+        color = Colors.purple;
+        break;
+      case 'TESLA':
+        color = Colors.cyan;
+        break;
+      case 'FORD':
         color = Colors.orange;
+        break;
+      case 'VW':
+        color = Colors.grey;
         break;
       default:
         color = Colors.transparent;
@@ -96,17 +115,26 @@ class _ApiEnumMappingState extends State<ApiEnumMapping> {
     return color;
   }
 
-  Color modelV1BgColor(ApiModel model) {
+  Color modelV1BgColor(Car model) {
     Color color;
-    switch (model.status) {
-      case ApiModelStatus.Success:
+    switch (model.brand) {
+      case CarBrand.Volvo:
         color = Colors.green;
         break;
-      case ApiModelStatus.Error:
+      case CarBrand.Mercedes:
         color = Colors.red;
         break;
-      case ApiModelStatus.Warnring:
+      case CarBrand.BMW:
+        color = Colors.purple;
+        break;
+      case CarBrand.Tesla:
+        color = Colors.cyan;
+        break;
+      case CarBrand.Ford:
         color = Colors.orange;
+        break;
+      case CarBrand.VW:
+        color = Colors.grey;
         break;
       default:
         color = Colors.transparent;

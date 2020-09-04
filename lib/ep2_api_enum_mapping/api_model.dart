@@ -1,49 +1,58 @@
-class ApiModel {
+class Car {
   final int id;
   final String name;
-  final ApiModelStatus status;
-  ApiModel({
+  final CarBrand brand;
+  Car({
     this.id,
     this.name,
-    this.status,
+    this.brand,
   });
 
-  ApiModel.fromJson(Map<String, dynamic> json)
+  Car.fromJson(Map<String, dynamic> json)
       : id = json['id'],
         name = json['name'],
-        status = ResponseApiModelStatusMap[json['status']];
+        brand = ResponseCarBrandMap[json['brand']];
 }
 
-class ApiModel2 {
+class Car2 {
   final int id;
   final String name;
-  final String status;
-  ApiModel2({
+  final String brand;
+  Car2({
     this.id,
     this.name,
-    this.status,
+    this.brand,
   });
 
-  ApiModel2.fromJson(Map<String, dynamic> json)
+  Car2.fromJson(Map<String, dynamic> json)
       : id = json['id'],
         name = json['name'],
-        status = json['status'];
+        brand = json['brand'];
 }
 
-enum ApiModelStatus {
-  Success,
-  Error,
-  Warnring,
+enum CarBrand {
+  Volvo,
+  Mercedes,
+  BMW,
+  Tesla,
+  Ford,
+  VW,
 }
 
-const Map<String, ApiModelStatus> ResponseApiModelStatusMap = {
-  'SUCCESS': ApiModelStatus.Success,
-  'ERROR': ApiModelStatus.Error,
-  'WARNRING': ApiModelStatus.Warnring,
+const Map<String, CarBrand> ResponseCarBrandMap = {
+  'VOLVO': CarBrand.Volvo,
+  'MERCEDES': CarBrand.Mercedes,
+  'BMW': CarBrand.BMW,
+  'TESLA': CarBrand.Tesla,
+  'FORD': CarBrand.Ford,
+  'VW': CarBrand.VW,
 };
 
-const Map<ApiModelStatus, String> RequestApiModelStatusMap = {
-  ApiModelStatus.Success: 'SUCCESS',
-  ApiModelStatus.Error: 'ERROR',
-  ApiModelStatus.Warnring: 'WARNRING',
+const Map<CarBrand, String> RequestCarBrandMap = {
+  CarBrand.Volvo: 'VOLVO',
+  CarBrand.Mercedes: 'MERCEDES',
+  CarBrand.BMW: 'BMW',
+  CarBrand.Tesla: 'TESLA',
+  CarBrand.Ford: 'FORD',
+  CarBrand.VW: 'VW',
 };
